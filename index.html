@@ -1,23 +1,41 @@
----
-layout: default
----
+<!DOCTYPE html>
+<html>
+<head>
+	<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.1/p5.js"></script>-->
+    <script src="sketch.js"></script>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="main.css">
+	<title>Champion Rotation</title>
+	<script src="https://na1.api.riotgames.com/lol/platform/v3/champions?api_key=RGAPI-58ec84bc-3594-4999-b09d-d117b4c8ccef"></script>
+	<header class="no-print">Champion Rotation</header>
+</head>
+<body>
+	<div class="container">
+		<div class="grid">
+			<ol>
+				<li>
+					<div class="anivia">
+						<a href="http://leagueoflegends.wikia.com/wiki/Anivia"></a>
+					</div>
+				</li>
+				<li>
+					<div class="splash"></div>
+				</li>
+				<li>
+					
+				</li>
+				<li>
+					
+				</li>
+				<li>
+					
+				</li>
+				<li>
+					
+				</li>
+			</ol>
+		</div>
 
-<div class="home">
-
-  <h1 class="page-heading">Posts</h1>
-
-  <ul class="post-list">
-    {% for post in site.posts %}
-      <li>
-        <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
-
-        <h2>
-          <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
-        </h2>
-      </li>
-    {% endfor %}
-  </ul>
-
-  <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
-
-</div>
+</body>
+</html>
