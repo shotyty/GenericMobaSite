@@ -1,0 +1,1011 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.1/p5.js"></script>-->
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="main.css">
+	<title>Champion Rotation</title>
+	<header class="no-print"><p>Champion Rotation</p>
+
+	</header>
+</head>
+<body>
+	<input type="text" id="userInput" value="Summoner Name"/>
+	<button  id='btn' onclick="grabInput()">Summoner Level</button>
+	<button id='filter' onclick='filterTank()'>Filter</button>
+	<div id="level"></div>
+	<div class="container">
+		<div class="grid">
+			<ol class="roster">
+				<li>
+					<div class="tank">
+						<a href="http://leagueoflegends.wikia.com/wiki/Aatrox">
+							<img src="https://vignette.wikia.nocookie.net/leagueoflegends/images/6/67/Aatrox_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414201907"
+							onmouseover="this.src='https://i.imgur.com/bkpeHuT.png'"
+							onmouseleave="this.src='https://vignette.wikia.nocookie.net/leagueoflegends/images/6/67/Aatrox_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414201907'"  alt=""/>
+						</a>
+					</div>
+				</li>
+				<li>
+					<div class="mage">
+					<a href="http://leagueoflegends.wikia.com/wiki/ahri">
+						<img src="https://vignette.wikia.nocookie.net/leagueoflegends/images/f/f1/Ahri_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414201908"
+						onmouseover="this.src='https://i.imgur.com/zI3sGDj.png'"
+						onmouseleave="this.src='https://vignette.wikia.nocookie.net/leagueoflegends/images/f/f1/Ahri_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414201908'"  alt=""/>
+					</a>
+				</div>
+				</li>
+				<li>
+					<a href="http://leagueoflegends.wikia.com/wiki/akali">
+						<img src="https://vignette.wikia.nocookie.net/leagueoflegends/images/c/c5/Akali_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414201909"
+						onmouseover="this.src='https://i.imgur.com/zI3sGDj.png'"
+						onmouseleave="this.src='https://vignette.wikia.nocookie.net/leagueoflegends/images/c/c5/Akali_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414201909'"  alt=""/>
+					</a>
+				</li>
+				<li>
+					<a href="http://leagueoflegends.wikia.com/wiki/alistar">
+						<img src="https://vignette.wikia.nocookie.net/leagueoflegends/images/3/30/Alistar_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414201910"
+						onmouseover="this.src='https://i.imgur.com/zI3sGDj.png'"
+						onmouseleave="this.src='https://vignette.wikia.nocookie.net/leagueoflegends/images/3/30/Alistar_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414201910'"  alt=""/>
+					</a>
+				</li>
+				<li>
+					<a href="http://leagueoflegends.wikia.com/wiki/amumu">
+						<img src="https://vignette.wikia.nocookie.net/leagueoflegends/images/b/b4/Amumu_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414201911"
+						onmouseover="this.src='https://i.imgur.com/zI3sGDj.png'"
+						onmouseleave="this.src='https://vignette.wikia.nocookie.net/leagueoflegends/images/b/b4/Amumu_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414201911'"  alt=""/>
+					</a>
+				</li>
+				<li>
+					<a href="http://leagueoflegends.wikia.com/wiki/anivia">
+						<img src="https://vignette.wikia.nocookie.net/leagueoflegends/images/c/c0/Anivia_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414201911"
+						onmouseover="this.src='https://i.imgur.com/zI3sGDj.png'"
+						onmouseleave="this.src='https://vignette.wikia.nocookie.net/leagueoflegends/images/c/c0/Anivia_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414201911'"  alt=""/>
+					</a>
+				</li>
+				<li>
+					<a href="http://leagueoflegends.wikia.com/wiki/annie">
+						<img src="https://vignette.wikia.nocookie.net/leagueoflegends/images/8/81/Annie_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414201912"
+						onmouseover="this.src='https://i.imgur.com/zI3sGDj.png'"
+						onmouseleave="this.src='https://vignette.wikia.nocookie.net/leagueoflegends/images/8/81/Annie_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414201912'"  alt=""/>
+					</a>
+				</li>
+				<li>
+					<a href="http://leagueoflegends.wikia.com/wiki/ashe">
+						<img src="https://vignette.wikia.nocookie.net/leagueoflegends/images/b/b8/Ashe_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414201913"
+						onmouseover="this.src='https://i.imgur.com/zI3sGDj.png'"
+						onmouseleave="this.src='https://vignette.wikia.nocookie.net/leagueoflegends/images/b/b8/Ashe_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414201913'"  alt=""/>
+					</a>
+				</li>
+				<li>
+					<a href="http://leagueoflegends.wikia.com/wiki/aurelion_sol">
+						<img src="https://vignette.wikia.nocookie.net/leagueoflegends/images/6/65/Aurelion_Sol_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414201914"
+						onmouseover="this.src='https://i.imgur.com/zI3sGDj.png'"
+						onmouseleave="this.src='https://vignette.wikia.nocookie.net/leagueoflegends/images/6/65/Aurelion_Sol_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414201914'"  alt=""/>
+					</a>
+				</li>
+				<li>
+					<a href="http://leagueoflegends.wikia.com/wiki/azir">
+						<img src="https://vignette.wikia.nocookie.net/leagueoflegends/images/0/03/Azir_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414201914"
+						onmouseover="this.src='https://i.imgur.com/zI3sGDj.png'"
+						onmouseleave="this.src='https://vignette.wikia.nocookie.net/leagueoflegends/images/0/03/Azir_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414201914'"  alt=""/>
+					</a>
+				</li>
+				<li>
+					<a href="http://leagueoflegends.wikia.com/wiki/bard">
+						<img src="https://vignette.wikia.nocookie.net/leagueoflegends/images/4/40/Bard_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414201951"
+						onmouseover="this.src='https://i.imgur.com/zI3sGDj.png'"
+						onmouseleave="this.src='https://vignette.wikia.nocookie.net/leagueoflegends/images/4/40/Bard_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414201951'"  alt=""/>
+					</a>
+				</li>
+				<li>
+					<a href="http://leagueoflegends.wikia.com/wiki/blitzcrank">
+						<img src="https://vignette.wikia.nocookie.net/leagueoflegends/images/6/65/Blitzcrank_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414201951"
+						onmouseover="this.src='https://i.imgur.com/zI3sGDj.png'"
+						onmouseleave="this.src='https://vignette.wikia.nocookie.net/leagueoflegends/images/6/65/Blitzcrank_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414201951'"  alt=""/>
+					</a>
+				</li>
+				<li>
+					<a href="http://leagueoflegends.wikia.com/wiki/brand">
+						<img src="https://vignette.wikia.nocookie.net/leagueoflegends/images/f/f0/Brand_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414201952"
+						onmouseover="this.src='https://i.imgur.com/zI3sGDj.png'"
+						onmouseleave="this.src='https://vignette.wikia.nocookie.net/leagueoflegends/images/f/f0/Brand_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414201952'"  alt=""/>
+					</a>
+				</li>
+				<li>
+					<a href="http://leagueoflegends.wikia.com/wiki/braum">
+						<img src="https://vignette.wikia.nocookie.net/leagueoflegends/images/6/66/Braum_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414201953"
+						onmouseover="this.src='https://i.imgur.com/zI3sGDj.png'"
+						onmouseleave="this.src='https://vignette.wikia.nocookie.net/leagueoflegends/images/6/66/Braum_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414201953'"  alt=""/>
+					</a>
+				</li>
+				<li>
+					<a href="http://leagueoflegends.wikia.com/wiki/caitlyn">
+						<img src="https://vignette.wikia.nocookie.net/leagueoflegends/images/e/ef/Caitlyn_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414201954"
+						onmouseover="this.src='https://i.imgur.com/zI3sGDj.png'"
+						onmouseleave="this.src='https://vignette.wikia.nocookie.net/leagueoflegends/images/e/ef/Caitlyn_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414201954'"  alt=""/>
+					</a>
+				</li>
+				<li>
+					<a href="http://leagueoflegends.wikia.com/wiki/camille">
+						<img src="https://vignette.wikia.nocookie.net/leagueoflegends/images/3/3d/Camille_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414201955"
+						onmouseover="this.src='https://i.imgur.com/zI3sGDj.png'"
+						onmouseleave="this.src='https://vignette.wikia.nocookie.net/leagueoflegends/images/3/3d/Camille_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414201955'"  alt=""/>
+					</a>
+				</li>
+				<li>
+					<a href="http://leagueoflegends.wikia.com/wiki/cassiopeia">
+						<img src="https://vignette.wikia.nocookie.net/leagueoflegends/images/2/23/Cassiopeia_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414201955"
+						onmouseover="this.src='https://i.imgur.com/zI3sGDj.png'"
+						onmouseleave="this.src='https://vignette.wikia.nocookie.net/leagueoflegends/images/2/23/Cassiopeia_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414201955'"  alt=""/>
+					</a>
+				</li>
+				<li>
+					<a href="http://leagueoflegends.wikia.com/wiki/chogath">
+						<img src="https://vignette.wikia.nocookie.net/leagueoflegends/images/7/70/Cho%27Gath_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414201956"
+						onmouseover="this.src='https://i.imgur.com/zI3sGDj.png'"
+						onmouseleave="this.src='https://vignette.wikia.nocookie.net/leagueoflegends/images/7/70/Cho%27Gath_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414201956'"  alt=""/>
+					</a>
+				</li>
+				<li>
+					<a href="http://leagueoflegends.wikia.com/wiki/corki">
+						<img src="https://vignette.wikia.nocookie.net/leagueoflegends/images/2/28/Corki_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414201957"
+						onmouseover="this.src='https://i.imgur.com/zI3sGDj.png'"
+						onmouseleave="this.src='https://vignette.wikia.nocookie.net/leagueoflegends/images/2/28/Corki_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414201957'"  alt=""/>
+					</a>
+				</li>
+				<li>
+					<a href="http://leagueoflegends.wikia.com/wiki/darius">
+						<img src="https://vignette.wikia.nocookie.net/leagueoflegends/images/e/eb/Darius_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414201958"
+						onmouseover="this.src='https://i.imgur.com/zI3sGDj.png'"
+						onmouseleave="this.src='https://vignette.wikia.nocookie.net/leagueoflegends/images/e/eb/Darius_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414201958'"  alt=""/>
+					</a>
+				</li>
+				<li>
+					<a href="http://leagueoflegends.wikia.com/wiki/diana">
+						<img src="https://lolstatic-a.akamaihd.net/site/mount-targon/079694fdf251b5e7de788d9ab439d401d31ae160/img/champions/diana/diana-hero-mobile.jpg"
+						onmouseover="this.src='https://i.imgur.com/zI3sGDj.png'"
+						onmouseleave="this.src='https://lolstatic-a.akamaihd.net/site/mount-targon/079694fdf251b5e7de788d9ab439d401d31ae160/img/champions/diana/diana-hero-mobile.jpg'"  alt=""/>
+					</a>
+				</li>
+				<li>
+					<a href="http://leagueoflegends.wikia.com/wiki/dr_mundo">
+						<img src="https://vignette.wikia.nocookie.net/leagueoflegends/images/7/7d/Dr._Mundo_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414202028"
+						onmouseover="this.src='https://i.imgur.com/zI3sGDj.png'"
+						onmouseleave="this.src='https://vignette.wikia.nocookie.net/leagueoflegends/images/7/7d/Dr._Mundo_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414202028'"  alt=""/>
+					</a>
+				</li>
+				<li>
+					<a href="http://leagueoflegends.wikia.com/wiki/draven">
+						<img src="https://vignette.wikia.nocookie.net/leagueoflegends/images/6/63/Draven_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414202029"
+						onmouseover="this.src='https://i.imgur.com/zI3sGDj.png'"
+						onmouseleave="this.src='https://vignette.wikia.nocookie.net/leagueoflegends/images/6/63/Draven_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414202029'"  alt=""/>
+					</a>
+				</li>
+				<li>
+					<a href="http://leagueoflegends.wikia.com/wiki/ekko">
+						<img src="https://vignette.wikia.nocookie.net/leagueoflegends/images/3/33/Ekko_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414202030"
+						onmouseover="this.src='https://i.imgur.com/zI3sGDj.png'"
+						onmouseleave="this.src='https://vignette.wikia.nocookie.net/leagueoflegends/images/3/33/Ekko_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414202030'"  alt=""/>
+					</a>
+				</li>
+				<li>
+					<a href="http://leagueoflegends.wikia.com/wiki/elise">
+						<img src="https://vignette.wikia.nocookie.net/leagueoflegends/images/a/af/Elise_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414202031"
+						onmouseover="this.src='https://i.imgur.com/zI3sGDj.png'"
+						onmouseleave="this.src='https://vignette.wikia.nocookie.net/leagueoflegends/images/a/af/Elise_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414202031'"  alt=""/>
+					</a>
+				</li>
+				<li>
+					<a href="http://leagueoflegends.wikia.com/wiki/evelynn">
+						<img src="https://vignette.wikia.nocookie.net/leagueoflegends/images/4/43/Evelynn_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414202031"
+						onmouseover="this.src='https://i.imgur.com/zI3sGDj.png'"
+						onmouseleave="this.src='https://vignette.wikia.nocookie.net/leagueoflegends/images/4/43/Evelynn_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414202031'"  alt=""/>
+					</a>
+				</li>
+				<li>
+					<a href="http://leagueoflegends.wikia.com/wiki/ezreal">
+						<img src="https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Ezreal_0.jpg"
+						onmouseover="this.src='https://i.imgur.com/zI3sGDj.png'"
+						onmouseleave="this.src='https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Ezreal_0.jpg'"  alt=""/>
+					</a>
+				</li>
+				<li>
+					<a href="http://leagueoflegends.wikia.com/wiki/fiddlesticks">
+						<img src="https://vignette.wikia.nocookie.net/leagueoflegends/images/a/a6/Fiddlesticks_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414202033"
+						onmouseover="this.src='https://i.imgur.com/zI3sGDj.png'"
+						onmouseleave="this.src='https://vignette.wikia.nocookie.net/leagueoflegends/images/a/a6/Fiddlesticks_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414202033'"  alt=""/>
+					</a>
+				</li>
+				<li>
+					<a href="http://leagueoflegends.wikia.com/wiki/fiora">
+						<img src="https://vignette.wikia.nocookie.net/leagueoflegends/images/2/25/Fiora_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414202034"
+						onmouseover="this.src='https://i.imgur.com/zI3sGDj.png'"
+						onmouseleave="this.src='https://vignette.wikia.nocookie.net/leagueoflegends/images/2/25/Fiora_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414202034'"  alt=""/>
+					</a>
+				</li>
+				<li>
+					<a href="http://leagueoflegends.wikia.com/wiki/fizz">
+						<img src="https://vignette.wikia.nocookie.net/leagueoflegends/images/6/60/Fizz_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414202034"
+						onmouseover="this.src='https://i.imgur.com/zI3sGDj.png'"
+						onmouseleave="this.src='https://vignette.wikia.nocookie.net/leagueoflegends/images/6/60/Fizz_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414202034'"  alt=""/>
+					</a>
+				</li>
+				<li>
+					<a href="http://leagueoflegends.wikia.com/wiki/galio">
+						<img src="https://vignette.wikia.nocookie.net/leagueoflegends/images/5/51/Galio_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414202110"
+						onmouseover="this.src='https://i.imgur.com/zI3sGDj.png'"
+						onmouseleave="this.src='https://vignette.wikia.nocookie.net/leagueoflegends/images/5/51/Galio_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414202110'"  alt=""/>
+					</a>
+				</li>
+				<li>
+					<a href="http://leagueoflegends.wikia.com/wiki/gangplank">
+						<img src="https://vignette.wikia.nocookie.net/leagueoflegends/images/f/f0/Gangplank_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414202111"
+						onmouseover="this.src='https://i.imgur.com/zI3sGDj.png'"
+						onmouseleave="this.src='https://vignette.wikia.nocookie.net/leagueoflegends/images/f/f0/Gangplank_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414202111'"  alt=""/>
+					</a>
+				</li>
+				<li>
+					<a href="http://leagueoflegends.wikia.com/wiki/garen">
+						<img src="http://3.bp.blogspot.com/-k4OmrC3TwRk/VLgbrfdQFXI/AAAAAAAAB28/KNHKb4RPx6w/s1600/Garen_OriginalSkin.jpg"
+						onmouseover="this.src='https://i.imgur.com/zI3sGDj.png'"
+						onmouseleave="this.src='http://3.bp.blogspot.com/-k4OmrC3TwRk/VLgbrfdQFXI/AAAAAAAAB28/KNHKb4RPx6w/s1600/Garen_OriginalSkin.jpg'"  alt=""/>
+					</a>
+				</li>
+				<li>
+					<a href="http://leagueoflegends.wikia.com/wiki/gnar">
+						<img src="https://vignette.wikia.nocookie.net/leagueoflegends/images/f/f4/Gnar_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414202113"
+						onmouseover="this.src='https://i.imgur.com/zI3sGDj.png'"
+						onmouseleave="this.src='https://vignette.wikia.nocookie.net/leagueoflegends/images/f/f4/Gnar_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414202113'"  alt=""/>
+					</a>
+				</li>
+				<li>
+					<a href="http://leagueoflegends.wikia.com/wiki/gragas">
+						<img src="https://vignette.wikia.nocookie.net/leagueoflegends/images/3/33/Gragas_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414202113"
+						onmouseover="this.src='https://i.imgur.com/zI3sGDj.png'"
+						onmouseleave="this.src='https://vignette.wikia.nocookie.net/leagueoflegends/images/3/33/Gragas_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414202113'"  alt=""/>
+					</a>
+				</li>
+				<li>
+					<a href="http://leagueoflegends.wikia.com/wiki/graves">
+						<img src="https://vignette.wikia.nocookie.net/leagueoflegends/images/a/a5/Graves_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414202114"
+						onmouseover="this.src='https://i.imgur.com/zI3sGDj.png'"
+						onmouseleave="this.src='https://vignette.wikia.nocookie.net/leagueoflegends/images/a/a5/Graves_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414202114'"  alt=""/>
+					</a>
+				</li>
+				<li>
+					<a href="http://leagueoflegends.wikia.com/wiki/hecarim">
+						<img src="https://vignette.wikia.nocookie.net/leagueoflegends/images/3/3c/Hecarim_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414202115"
+						onmouseover="this.src='https://i.imgur.com/zI3sGDj.png'"
+						onmouseleave="this.src='https://vignette.wikia.nocookie.net/leagueoflegends/images/3/3c/Hecarim_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414202115'"  alt=""/>
+					</a>
+				</li>
+				<li>
+					<a href="http://leagueoflegends.wikia.com/wiki/heimerdinger">
+						<img src="https://vignette.wikia.nocookie.net/leagueoflegends/images/4/4a/Heimerdinger_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414202115"
+						onmouseover="this.src='https://i.imgur.com/zI3sGDj.png'"
+						onmouseleave="this.src='https://vignette.wikia.nocookie.net/leagueoflegends/images/4/4a/Heimerdinger_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414202115'"  alt=""/>
+					</a>
+				</li>
+				<li>
+					<a href="http://leagueoflegends.wikia.com/wiki/illaoi">
+						<img src="https://vignette.wikia.nocookie.net/leagueoflegends/images/4/4b/Illaoi_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414202116"
+						onmouseover="this.src='https://i.imgur.com/zI3sGDj.png'"
+						onmouseleave="this.src='https://vignette.wikia.nocookie.net/leagueoflegends/images/4/4b/Illaoi_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414202116'"  alt=""/>
+					</a>
+				</li>
+				<li>
+					<a href="http://leagueoflegends.wikia.com/wiki/irelia">
+						<img src="https://vignette.wikia.nocookie.net/leagueoflegends/images/6/6f/Irelia_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414202117"
+						onmouseover="this.src='https://i.imgur.com/zI3sGDj.png'"
+						onmouseleave="this.src='https://vignette.wikia.nocookie.net/leagueoflegends/images/6/6f/Irelia_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414202117'"  alt=""/>
+					</a>
+				</li>
+				<li>
+					<a href="http://leagueoflegends.wikia.com/wiki/ivern">
+						<img src="http://assets1.ignimgs.com/thumbs/userUploaded/2016/10/4/leagueoflegendsivern-1475596465010.jpg"
+						onmouseover="this.src='https://i.imgur.com/zI3sGDj.png'"
+						onmouseleave="this.src='http://assets1.ignimgs.com/thumbs/userUploaded/2016/10/4/leagueoflegendsivern-1475596465010.jpg'"  alt=""/>
+					</a>
+				</li>
+				<li>
+					<a href="http://leagueoflegends.wikia.com/wiki/janna">
+						<img src="https://vignette.wikia.nocookie.net/leagueoflegends/images/7/79/Janna_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203244"
+						onmouseover="this.src='https://i.imgur.com/zI3sGDj.png'"
+						onmouseleave="this.src='https://vignette.wikia.nocookie.net/leagueoflegends/images/7/79/Janna_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203244'"  alt=""/>
+					</a>
+				</li>
+				<li>
+					<a href="http://leagueoflegends.wikia.com/wiki/jarvaniv">
+						<img src="https://vignette.wikia.nocookie.net/leagueoflegends/images/c/c3/Jarvan_IV_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203245"
+						onmouseover="this.src='https://i.imgur.com/zI3sGDj.png'"
+						onmouseleave="this.src='https://vignette.wikia.nocookie.net/leagueoflegends/images/c/c3/Jarvan_IV_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203245'"  alt=""/>
+					</a>
+				</li>
+				<li>
+					<a href="http://leagueoflegends.wikia.com/wiki/jax">
+						<img src="https://vignette.wikia.nocookie.net/leagueoflegends/images/a/a6/Jax_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203245"
+						onmouseover="this.src='https://i.imgur.com/zI3sGDj.png'"
+						onmouseleave="this.src='https://vignette.wikia.nocookie.net/leagueoflegends/images/a/a6/Jax_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203245'"  alt=""/>
+					</a>
+				</li>
+				<li>
+					<a href="http://leagueoflegends.wikia.com/wiki/jayce">
+						<img src="https://vignette.wikia.nocookie.net/leagueoflegends/images/e/e1/Jayce_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203246"
+						onmouseover="this.src='https://i.imgur.com/zI3sGDj.png'"
+						onmouseleave="this.src='https://vignette.wikia.nocookie.net/leagueoflegends/images/e/e1/Jayce_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203246'"  alt=""/>
+					</a>
+				</li>
+				<li>
+					<a href="http://leagueoflegends.wikia.com/wiki/jhin">
+						<img src="https://vignette.wikia.nocookie.net/leagueoflegends/images/0/0f/Jhin_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203247"
+						onmouseover="this.src='https://i.imgur.com/zI3sGDj.png'"
+						onmouseleave="this.src='https://vignette.wikia.nocookie.net/leagueoflegends/images/0/0f/Jhin_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203247'"  alt=""/>
+					</a>
+				</li>
+				<li>
+					<a href="http://leagueoflegends.wikia.com/wiki/jinx">
+						<img src="https://vignette.wikia.nocookie.net/leagueoflegends/images/5/55/Jinx_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203248"
+						onmouseover="this.src='https://i.imgur.com/zI3sGDj.png'"
+						onmouseleave="this.src='https://vignette.wikia.nocookie.net/leagueoflegends/images/5/55/Jinx_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203248'"  alt=""/>
+					</a>
+				</li>
+				<li>
+					<a href="http://leagueoflegends.wikia.com/wiki/kaisa">
+						<img src="https://vignette.wikia.nocookie.net/leagueoflegends/images/8/83/Kai%27Sa_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203248"
+						onmouseover="this.src='https://i.imgur.com/zI3sGDj.png'"
+						onmouseleave="this.src='https://vignette.wikia.nocookie.net/leagueoflegends/images/8/83/Kai%27Sa_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203248'"  alt=""/>
+					</a>
+				</li>
+				<li>
+					<a href="http://leagueoflegends.wikia.com/wiki/kalista">
+						<img src="https://vignette.wikia.nocookie.net/leagueoflegends/images/3/30/Kalista_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203249"
+						onmouseover="this.src='https://i.imgur.com/zI3sGDj.png'"
+						onmouseleave="this.src='https://vignette.wikia.nocookie.net/leagueoflegends/images/3/30/Kalista_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203249'"  alt=""/>
+					</a>
+				</li>
+				<li>
+					<a href="http://leagueoflegends.wikia.com/wiki/karma">
+						<img src="https://vignette.wikia.nocookie.net/leagueoflegends/images/9/9b/Karma_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203250"
+						onmouseover="this.src='https://i.imgur.com/zI3sGDj.png'"
+						onmouseleave="this.src='https://vignette.wikia.nocookie.net/leagueoflegends/images/9/9b/Karma_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203250'"  alt=""/>
+					</a>
+				</li>
+				<li>
+					<a href="http://leagueoflegends.wikia.com/wiki/karthus">
+						<img src="https://vignette.wikia.nocookie.net/leagueoflegends/images/8/8e/Karthus_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203325"
+						onmouseover="this.src='https://i.imgur.com/zI3sGDj.png'"
+						onmouseleave="this.src='https://vignette.wikia.nocookie.net/leagueoflegends/images/8/8e/Karthus_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203325'"  alt=""/>
+					</a>
+				</li>
+				<li>
+					<a href="http://leagueoflegends.wikia.com/wiki/kassadin">
+						<img src="https://vignette.wikia.nocookie.net/leagueoflegends/images/3/32/Kassadin_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203326"
+						onmouseover="this.src='https://i.imgur.com/zI3sGDj.png'"
+						onmouseleave="this.src='https://vignette.wikia.nocookie.net/leagueoflegends/images/3/32/Kassadin_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203326'"  alt=""/>
+					</a>
+				</li>
+				<li>
+					<a href="http://leagueoflegends.wikia.com/wiki/katarina">
+						<img src="https://vignette.wikia.nocookie.net/leagueoflegends/images/4/4b/Katarina_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203326"
+						onmouseover="this.src='https://i.imgur.com/zI3sGDj.png'"
+						onmouseleave="this.src='https://vignette.wikia.nocookie.net/leagueoflegends/images/4/4b/Katarina_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203326'"  alt=""/>
+					</a>
+				</li>
+				<li>
+					<a href="http://leagueoflegends.wikia.com/wiki/kayle">
+						<img src="https://vignette.wikia.nocookie.net/leagueoflegends/images/9/9e/Kayle_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203327"
+						onmouseover="this.src='https://i.imgur.com/zI3sGDj.png'"
+						onmouseleave="this.src='https://vignette.wikia.nocookie.net/leagueoflegends/images/9/9e/Kayle_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203327'"  alt=""/>
+					</a>
+				</li>
+				<li>
+					<a href="http://leagueoflegends.wikia.com/wiki/kayn">
+						<img src="https://vignette.wikia.nocookie.net/leagueoflegends/images/7/7d/Kayn_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414184150"
+						onmouseover="this.src='https://i.imgur.com/zI3sGDj.png'"
+						onmouseleave="this.src='https://vignette.wikia.nocookie.net/leagueoflegends/images/7/7d/Kayn_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414184150'"  alt=""/>
+					</a>
+				</li>
+				<li>
+					<a href="http://leagueoflegends.wikia.com/wiki/kennen">
+						<img src="https://vignette.wikia.nocookie.net/leagueoflegends/images/5/5f/Kennen_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203328"
+						onmouseover="this.src='https://i.imgur.com/zI3sGDj.png'"
+						onmouseleave="this.src='https://vignette.wikia.nocookie.net/leagueoflegends/images/5/5f/Kennen_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203328'"  alt=""/>
+					</a>
+				</li>
+				<li>
+					<a href="http://leagueoflegends.wikia.com/wiki/Kha'Zix">
+						<img src="https://vignette.wikia.nocookie.net/leagueoflegends/images/c/c7/Kha%27Zix_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203328"
+						onmouseover="this.src='https://i.imgur.com/zI3sGDj.png'"
+						onmouseleave="this.src='https://vignette.wikia.nocookie.net/leagueoflegends/images/c/c7/Kha%27Zix_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203328'"  alt=""/>
+					</a>
+				</li>
+				<li>
+					<a href="http://leagueoflegends.wikia.com/wiki/kindred">
+						<img src="https://vignette.wikia.nocookie.net/leagueoflegends/images/e/e0/Kindred_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203329"
+						onmouseover="this.src='https://i.imgur.com/zI3sGDj.png'"
+						onmouseleave="this.src='https://vignette.wikia.nocookie.net/leagueoflegends/images/e/e0/Kindred_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203329'"  alt=""/>
+					</a>
+				</li>
+				<li>
+					<a href="http://leagueoflegends.wikia.com/wiki/kled">
+						<img src="https://vignette.wikia.nocookie.net/leagueoflegends/images/9/92/Kled_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203330"
+						onmouseover="this.src='https://i.imgur.com/zI3sGDj.png'"
+						onmouseleave="this.src='https://vignette.wikia.nocookie.net/leagueoflegends/images/9/92/Kled_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203330'"  alt=""/>
+					</a>
+				</li>
+				<li>
+					<a href="http://leagueoflegends.wikia.com/wiki/Kog'Maw">
+						<img src="https://vignette.wikia.nocookie.net/leagueoflegends/images/e/e1/Kog%27Maw_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203331"
+						onmouseover="this.src='https://i.imgur.com/zI3sGDj.png'"
+						onmouseleave="this.src='https://vignette.wikia.nocookie.net/leagueoflegends/images/e/e1/Kog%27Maw_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203331'"  alt=""/>
+					</a>
+				</li>
+				<li>
+					<a href="http://leagueoflegends.wikia.com/wiki/leblanc">
+						<img src="https://vignette.wikia.nocookie.net/leagueoflegends/images/3/3c/LeBlanc_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203332"
+						onmouseover="this.src='https://i.imgur.com/zI3sGDj.png'"
+						onmouseleave="this.src='https://vignette.wikia.nocookie.net/leagueoflegends/images/3/3c/LeBlanc_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203332'"  alt=""/>
+					</a>
+				</li>
+				<li>
+					<a href="http://leagueoflegends.wikia.com/wiki/Lee_Sin">
+						<img src="https://vignette.wikia.nocookie.net/leagueoflegends/images/a/a8/Lee_Sin_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203354"
+						onmouseover="this.src='https://i.imgur.com/zI3sGDj.png'"
+						onmouseleave="this.src='https://vignette.wikia.nocookie.net/leagueoflegends/images/a/a8/Lee_Sin_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203354'"  alt=""/>
+					</a>
+				</li>
+				<li>
+					<a href="http://leagueoflegends.wikia.com/wiki/Leona">
+						<img src="https://vignette.wikia.nocookie.net/leagueoflegends/images/6/69/Leona_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203355"
+						onmouseover="this.src='https://i.imgur.com/zI3sGDj.png'"
+						onmouseleave="this.src='https://vignette.wikia.nocookie.net/leagueoflegends/images/6/69/Leona_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203355'"  alt=""/>
+					</a>
+				</li>
+				<li>
+					<a href="http://leagueoflegends.wikia.com/wiki/Lissandra">
+						<img src="https://vignette.wikia.nocookie.net/leagueoflegends/images/8/84/Lissandra_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203356"
+						onmouseover="this.src='https://i.imgur.com/zI3sGDj.png'"
+						onmouseleave="this.src='https://vignette.wikia.nocookie.net/leagueoflegends/images/8/84/Lissandra_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203356'"  alt=""/>
+					</a>
+				</li>
+				<li>
+					<a href="http://leagueoflegends.wikia.com/wiki/Lucian">
+						<img src="https://vignette.wikia.nocookie.net/leagueoflegends/images/d/db/Lucian_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203357"
+						onmouseover="this.src='https://i.imgur.com/zI3sGDj.png'"
+						onmouseleave="this.src='https://vignette.wikia.nocookie.net/leagueoflegends/images/d/db/Lucian_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203357'"  alt=""/>
+					</a>
+				</li>
+				<li>
+					<a href="http://leagueoflegends.wikia.com/wiki/Lulu">
+						<img src="https://vignette.wikia.nocookie.net/leagueoflegends/images/e/e9/Lulu_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203357"
+						onmouseover="this.src='https://i.imgur.com/zI3sGDj.png'"
+						onmouseleave="this.src='https://vignette.wikia.nocookie.net/leagueoflegends/images/e/e9/Lulu_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203357'"  alt=""/>
+					</a>
+				</li>
+				<li>
+					<a href="http://leagueoflegends.wikia.com/wiki/Lux">
+						<img src="https://vignette.wikia.nocookie.net/leagueoflegends/images/b/ba/Lux_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203358"
+						onmouseover="this.src='https://i.imgur.com/zI3sGDj.png'"
+						onmouseleave="this.src='https://vignette.wikia.nocookie.net/leagueoflegends/images/b/ba/Lux_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203358'"  alt=""/>
+					</a>
+				</li>
+				<li>
+					<a href="http://leagueoflegends.wikia.com/wiki/Malphite">
+						<img src="https://vignette.wikia.nocookie.net/leagueoflegends/images/6/68/Malphite_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203359"
+						onmouseover="this.src='https://i.imgur.com/zI3sGDj.png'"
+						onmouseleave="this.src='https://vignette.wikia.nocookie.net/leagueoflegends/images/6/68/Malphite_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203359'"  alt=""/>
+					</a>
+				</li>
+				<li>
+					<a href="http://leagueoflegends.wikia.com/wiki/Malzahar">
+						<img src="https://vignette.wikia.nocookie.net/leagueoflegends/images/4/4e/Malzahar_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203359"
+						onmouseover="this.src='https://i.imgur.com/zI3sGDj.png'"
+						onmouseleave="this.src='https://vignette.wikia.nocookie.net/leagueoflegends/images/4/4e/Malzahar_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203359'"  alt=""/>
+					</a>
+				</li>
+				<li>
+					<a href="http://leagueoflegends.wikia.com/wiki/Maokai">
+						<img src="https://vignette.wikia.nocookie.net/leagueoflegends/images/b/bb/Maokai_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203400"
+						onmouseover="this.src='https://i.imgur.com/zI3sGDj.png'"
+						onmouseleave="this.src='https://vignette.wikia.nocookie.net/leagueoflegends/images/b/bb/Maokai_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203400'"  alt=""/>
+					</a>
+				</li>
+				<li>
+					<a href="http://leagueoflegends.wikia.com/wiki/Master_Yi">
+						<img src="https://vignette.wikia.nocookie.net/leagueoflegends/images/6/67/Master_Yi_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203401"
+						onmouseover="this.src='https://i.imgur.com/zI3sGDj.png'"
+						onmouseleave="this.src='https://vignette.wikia.nocookie.net/leagueoflegends/images/6/67/Master_Yi_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203401'"  alt=""/>
+					</a>
+				</li>
+				<li>
+					<a href="http://leagueoflegends.wikia.com/wiki/Miss_Fortune">
+						<img src="https://vignette.wikia.nocookie.net/leagueoflegends/images/c/cf/Miss_Fortune_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203432"
+						onmouseover="this.src='https://i.imgur.com/zI3sGDj.png'"
+						onmouseleave="this.src='https://vignette.wikia.nocookie.net/leagueoflegends/images/c/cf/Miss_Fortune_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203432'"  alt=""/>
+					</a>
+				</li>
+				<li>
+					<a href="http://leagueoflegends.wikia.com/wiki/Mordekaiser">
+						<img src="https://vignette.wikia.nocookie.net/leagueoflegends/images/c/c1/Mordekaiser_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203433"
+						onmouseover="this.src='https://i.imgur.com/zI3sGDj.png'"
+						onmouseleave="this.src='https://vignette.wikia.nocookie.net/leagueoflegends/images/c/c1/Mordekaiser_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203433'"  alt=""/>
+					</a>
+				</li>
+				<li>
+					<a href="http://leagueoflegends.wikia.com/wiki/Morgana">
+						<img src="https://vignette.wikia.nocookie.net/leagueoflegends/images/d/df/Morgana_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203434"
+						onmouseover="this.src='https://i.imgur.com/zI3sGDj.png'"
+						onmouseleave="this.src='https://vignette.wikia.nocookie.net/leagueoflegends/images/d/df/Morgana_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203434'"  alt=""/>
+					</a>
+				</li>
+				<li>
+					<a href="http://leagueoflegends.wikia.com/wiki/Nami">
+						<img src="https://vignette.wikia.nocookie.net/leagueoflegends/images/f/f4/Nami_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203435"
+						onmouseover="this.src='https://i.imgur.com/zI3sGDj.png'"
+						onmouseleave="this.src='https://vignette.wikia.nocookie.net/leagueoflegends/images/f/f4/Nami_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203435'"  alt=""/>
+					</a>
+				</li>
+				<li>
+					<a href="http://leagueoflegends.wikia.com/wiki/Nasus">
+						<img src="https://vignette.wikia.nocookie.net/leagueoflegends/images/c/cc/Nasus_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203436"
+						onmouseover="this.src='https://i.imgur.com/zI3sGDj.png'"
+						onmouseleave="this.src='https://vignette.wikia.nocookie.net/leagueoflegends/images/c/cc/Nasus_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203436'"  alt=""/>
+					</a>
+				</li>
+				<li>
+					<a href="http://leagueoflegends.wikia.com/wiki/Nautilus">
+						<img src="https://vignette.wikia.nocookie.net/leagueoflegends/images/e/ef/Nautilus_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203437"
+						onmouseover="this.src='https://i.imgur.com/zI3sGDj.png'"
+						onmouseleave="this.src='https://vignette.wikia.nocookie.net/leagueoflegends/images/e/ef/Nautilus_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203437'"  alt=""/>
+					</a>
+				</li>
+				<li>
+					<a href="http://leagueoflegends.wikia.com/wiki/Nidalee">
+						<img src="https://vignette.wikia.nocookie.net/leagueoflegends/images/7/7b/Nidalee_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203437"
+						onmouseover="this.src='https://i.imgur.com/zI3sGDj.png'"
+						onmouseleave="this.src='https://vignette.wikia.nocookie.net/leagueoflegends/images/7/7b/Nidalee_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203437'"  alt=""/>
+					</a>
+				</li>
+				<li>
+					<a href="http://leagueoflegends.wikia.com/wiki/Nocturne">
+						<img src="https://vignette.wikia.nocookie.net/leagueoflegends/images/9/94/Nocturne_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203438"
+						onmouseover="this.src='https://i.imgur.com/zI3sGDj.png'"
+						onmouseleave="this.src='https://vignette.wikia.nocookie.net/leagueoflegends/images/9/94/Nocturne_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203438'"  alt=""/>
+					</a>
+				</li>
+				<li>
+					<a href="http://leagueoflegends.wikia.com/wiki/Nunu">
+						<img src="https://vignette.wikia.nocookie.net/leagueoflegends/images/0/09/Nunu_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203439"
+						onmouseover="this.src='https://i.imgur.com/zI3sGDj.png'"
+						onmouseleave="this.src='https://vignette.wikia.nocookie.net/leagueoflegends/images/0/09/Nunu_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203439'"  alt=""/>
+					</a>
+				</li>
+				<li>
+					<a href="http://leagueoflegends.wikia.com/wiki/Olaf">
+						<img src="https://vignette.wikia.nocookie.net/leagueoflegends/images/e/ef/Olaf_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203439"
+						onmouseover="this.src='https://i.imgur.com/zI3sGDj.png'"
+						onmouseleave="this.src='https://vignette.wikia.nocookie.net/leagueoflegends/images/e/ef/Olaf_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203439'"  alt=""/>
+					</a>
+				</li>
+				<li>
+					<a href="http://leagueoflegends.wikia.com/wiki/Orianna">
+						<img src="https://vignette.wikia.nocookie.net/leagueoflegends/images/8/8e/Orianna_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203501"
+						onmouseover="this.src='https://i.imgur.com/zI3sGDj.png'"
+						onmouseleave="this.src='https://vignette.wikia.nocookie.net/leagueoflegends/images/8/8e/Orianna_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203501'"  alt=""/>
+					</a>
+				</li>
+				<li>
+					<a href="http://leagueoflegends.wikia.com/wiki/Ornn">
+						<img src="https://vignette.wikia.nocookie.net/leagueoflegends/images/8/88/Ornn_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203502"
+						onmouseover="this.src='https://i.imgur.com/zI3sGDj.png'"
+						onmouseleave="this.src='https://vignette.wikia.nocookie.net/leagueoflegends/images/8/88/Ornn_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203502'"  alt=""/>
+					</a>
+				</li>
+				<li>
+					<a href="http://leagueoflegends.wikia.com/wiki/Pantheon">
+						<img src="https://vignette.wikia.nocookie.net/leagueoflegends/images/b/b0/Pantheon_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203502"
+						onmouseover="this.src='https://i.imgur.com/zI3sGDj.png'"
+						onmouseleave="this.src='https://vignette.wikia.nocookie.net/leagueoflegends/images/b/b0/Pantheon_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203502'"  alt=""/>
+					</a>
+				</li>
+				<li>
+					<a href="http://leagueoflegends.wikia.com/wiki/Poppy">
+						<img src="https://vignette.wikia.nocookie.net/leagueoflegends/images/9/90/Poppy_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203503"
+						onmouseover="this.src='https://i.imgur.com/zI3sGDj.png'"
+						onmouseleave="this.src='https://vignette.wikia.nocookie.net/leagueoflegends/images/9/90/Poppy_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203503'"  alt=""/>
+					</a>
+				</li>
+				<li>
+					<a href="http://leagueoflegends.wikia.com/wiki/Quinn">
+						<img src="https://vignette.wikia.nocookie.net/leagueoflegends/images/3/34/Quinn_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203504"
+						onmouseover="this.src='https://i.imgur.com/zI3sGDj.png'"
+						onmouseleave="this.src='https://vignette.wikia.nocookie.net/leagueoflegends/images/3/34/Quinn_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203504'"  alt=""/>
+					</a>
+				</li>
+				<li>
+					<a href="http://leagueoflegends.wikia.com/wiki/Rakan">
+						<img src="https://vignette.wikia.nocookie.net/leagueoflegends/images/5/55/Rakan_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203504"
+						onmouseover="this.src='https://i.imgur.com/zI3sGDj.png'"
+						onmouseleave="this.src='https://vignette.wikia.nocookie.net/leagueoflegends/images/5/55/Rakan_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203504'"  alt=""/>
+					</a>
+				</li>
+				<li>
+					<a href="http://leagueoflegends.wikia.com/wiki/Rammus">
+						<img src="https://vignette.wikia.nocookie.net/leagueoflegends/images/3/3b/Rammus_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203505"
+						onmouseover="this.src='https://i.imgur.com/zI3sGDj.png'"
+						onmouseleave="this.src='https://vignette.wikia.nocookie.net/leagueoflegends/images/3/3b/Rammus_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203505'"  alt=""/>
+					</a>
+				</li>
+				<li>
+					<a href="http://leagueoflegends.wikia.com/wiki/Rek'Sai">
+						<img src="https://vignette.wikia.nocookie.net/leagueoflegends/images/4/4b/Rek%27Sai_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203506"
+						onmouseover="this.src='https://i.imgur.com/zI3sGDj.png'"
+						onmouseleave="this.src='https://vignette.wikia.nocookie.net/leagueoflegends/images/4/4b/Rek%27Sai_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203506'"  alt=""/>
+					</a>
+				</li>
+				<li>
+					<a href="http://leagueoflegends.wikia.com/wiki/Renekton">
+						<img src="https://vignette.wikia.nocookie.net/leagueoflegends/images/8/89/Renekton_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203507"
+						onmouseover="this.src='https://i.imgur.com/zI3sGDj.png'"
+						onmouseleave="this.src='https://vignette.wikia.nocookie.net/leagueoflegends/images/8/89/Renekton_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203507'"  alt=""/>
+					</a>
+				</li>
+				<li>
+					<a href="http://leagueoflegends.wikia.com/wiki/Rengar">
+						<img src="https://vignette.wikia.nocookie.net/leagueoflegends/images/0/03/Rengar_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203508"
+						onmouseover="this.src='https://i.imgur.com/zI3sGDj.png'"
+						onmouseleave="this.src='https://vignette.wikia.nocookie.net/leagueoflegends/images/0/03/Rengar_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203508'"  alt=""/>
+					</a>
+				</li>
+				<li>
+					<a href="http://leagueoflegends.wikia.com/wiki/Riven">
+						<img src="https://vignette.wikia.nocookie.net/leagueoflegends/images/6/6e/Riven_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203542"
+						onmouseover="this.src='https://i.imgur.com/zI3sGDj.png'"
+						onmouseleave="this.src='https://vignette.wikia.nocookie.net/leagueoflegends/images/6/6e/Riven_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203542'"  alt=""/>
+					</a>
+				</li>
+				<li>
+					<a href="http://leagueoflegends.wikia.com/wiki/Rumble">
+						<img src="https://vignette.wikia.nocookie.net/leagueoflegends/images/5/5d/Rumble_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203544"
+						onmouseover="this.src='https://i.imgur.com/zI3sGDj.png'"
+						onmouseleave="this.src='https://vignette.wikia.nocookie.net/leagueoflegends/images/5/5d/Rumble_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203544'"  alt=""/>
+					</a>
+				</li>
+				<li>
+					<a href="http://leagueoflegends.wikia.com/wiki/Ryze">
+						<img src="https://vignette.wikia.nocookie.net/leagueoflegends/images/e/ed/Ryze_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203544"
+						onmouseover="this.src='https://i.imgur.com/zI3sGDj.png'"
+						onmouseleave="this.src='https://vignette.wikia.nocookie.net/leagueoflegends/images/e/ed/Ryze_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203544'"  alt=""/>
+					</a>
+				</li>
+				<li>
+					<a href="http://leagueoflegends.wikia.com/wiki/Sejuani">
+						<img src="https://vignette.wikia.nocookie.net/leagueoflegends/images/a/af/Sejuani_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203545"
+						onmouseover="this.src='https://i.imgur.com/zI3sGDj.png'"
+						onmouseleave="this.src='https://vignette.wikia.nocookie.net/leagueoflegends/images/a/af/Sejuani_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203545'"  alt=""/>
+					</a>
+				</li>
+				<li>
+					<a href="http://leagueoflegends.wikia.com/wiki/Shaco">
+						<img src="https://vignette.wikia.nocookie.net/leagueoflegends/images/1/1c/Shaco_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203546"
+						onmouseover="this.src='https://i.imgur.com/zI3sGDj.png'"
+						onmouseleave="this.src='https://vignette.wikia.nocookie.net/leagueoflegends/images/1/1c/Shaco_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203546'"  alt=""/>
+					</a>
+				</li>
+				<li>
+					<a href="http://leagueoflegends.wikia.com/wiki/Shen">
+						<img src="https://vignette.wikia.nocookie.net/leagueoflegends/images/1/1e/Shen_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203546"
+						onmouseover="this.src='https://i.imgur.com/zI3sGDj.png'"
+						onmouseleave="this.src='https://vignette.wikia.nocookie.net/leagueoflegends/images/1/1e/Shen_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203546'"  alt=""/>
+					</a>
+				</li>
+				<li>
+					<a href="http://leagueoflegends.wikia.com/wiki/Shyvana">
+						<img src="https://vignette.wikia.nocookie.net/leagueoflegends/images/5/51/Shyvana_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203547"
+						onmouseover="this.src='https://i.imgur.com/zI3sGDj.png'"
+						onmouseleave="this.src='https://vignette.wikia.nocookie.net/leagueoflegends/images/5/51/Shyvana_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203547'"  alt=""/>
+					</a>
+				</li>
+				<li>
+					<a href="http://leagueoflegends.wikia.com/wiki/Singed">
+						<img src="https://vignette.wikia.nocookie.net/leagueoflegends/images/f/ff/Singed_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203548"
+						onmouseover="this.src='https://i.imgur.com/zI3sGDj.png'"
+						onmouseleave="this.src='https://vignette.wikia.nocookie.net/leagueoflegends/images/f/ff/Singed_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203548'"  alt=""/>
+					</a>
+				</li>
+				<li>
+					<a href="http://leagueoflegends.wikia.com/wiki/Sion">
+						<img src="https://vignette.wikia.nocookie.net/leagueoflegends/images/f/fc/Sion_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203549"
+						onmouseover="this.src='https://i.imgur.com/zI3sGDj.png'"
+						onmouseleave="this.src='https://vignette.wikia.nocookie.net/leagueoflegends/images/f/fc/Sion_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203549'"  alt=""/>
+					</a>
+				</li>
+				<li>
+					<a href="http://leagueoflegends.wikia.com/wiki/Sivir">
+						<img src="https://vignette.wikia.nocookie.net/leagueoflegends/images/8/88/Sivir_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203549"
+						onmouseover="this.src='https://i.imgur.com/zI3sGDj.png'"
+						onmouseleave="this.src='https://vignette.wikia.nocookie.net/leagueoflegends/images/8/88/Sivir_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203549'"  alt=""/>
+					</a>
+				</li>
+				<li>
+					<a href="http://leagueoflegends.wikia.com/wiki/Skarner">
+						<img src="https://vignette.wikia.nocookie.net/leagueoflegends/images/7/7b/Skarner_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203618"
+						onmouseover="this.src='https://i.imgur.com/zI3sGDj.png'"
+						onmouseleave="this.src='https://vignette.wikia.nocookie.net/leagueoflegends/images/7/7b/Skarner_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203618'"  alt=""/>
+					</a>
+				</li>
+				<li>
+					<a href="http://leagueoflegends.wikia.com/wiki/Sona">
+						<img src="https://vignette.wikia.nocookie.net/leagueoflegends/images/9/99/Sona_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414204706"
+						onmouseover="this.src='https://i.imgur.com/zI3sGDj.png'"
+						onmouseleave="this.src='https://vignette.wikia.nocookie.net/leagueoflegends/images/9/99/Sona_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414204706'"  alt=""/>
+					</a>
+				</li>
+				<li>
+					<a href="http://leagueoflegends.wikia.com/wiki/Soraka">
+						<img src="https://vignette.wikia.nocookie.net/leagueoflegends/images/2/2f/Soraka_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203619"
+						onmouseover="this.src='https://i.imgur.com/zI3sGDj.png'"
+						onmouseleave="this.src='https://vignette.wikia.nocookie.net/leagueoflegends/images/2/2f/Soraka_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203619'"  alt=""/>
+					</a>
+				</li>
+				<li>
+					<a href="http://leagueoflegends.wikia.com/wiki/Swain">
+						<img src="https://vignette.wikia.nocookie.net/leagueoflegends/images/f/f6/Swain_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203619"
+						onmouseover="this.src='https://i.imgur.com/zI3sGDj.png'"
+						onmouseleave="this.src='https://vignette.wikia.nocookie.net/leagueoflegends/images/f/f6/Swain_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203619'"  alt=""/>
+					</a>
+				</li>
+				<li>
+					<a href="http://leagueoflegends.wikia.com/wiki/Syndra">
+						<img src="https://vignette.wikia.nocookie.net/leagueoflegends/images/6/64/Syndra_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203620"
+						onmouseover="this.src='https://i.imgur.com/zI3sGDj.png'"
+						onmouseleave="this.src='https://vignette.wikia.nocookie.net/leagueoflegends/images/6/64/Syndra_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203620'"  alt=""/>
+					</a>
+				</li>
+				<li>
+					<a href="http://leagueoflegends.wikia.com/wiki/Tahm_Kench">
+						<img src="https://vignette.wikia.nocookie.net/leagueoflegends/images/5/5e/Tahm_Kench_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203621"
+						onmouseover="this.src='https://i.imgur.com/zI3sGDj.png'"
+						onmouseleave="this.src='https://vignette.wikia.nocookie.net/leagueoflegends/images/5/5e/Tahm_Kench_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203621'"  alt=""/>
+					</a>
+				</li>
+				<li>
+					<a href="http://leagueoflegends.wikia.com/wiki/Taliyah">
+						<img src="https://vignette.wikia.nocookie.net/leagueoflegends/images/c/c8/Taliyah_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203621"
+						onmouseover="this.src='https://i.imgur.com/zI3sGDj.png'"
+						onmouseleave="this.src='https://vignette.wikia.nocookie.net/leagueoflegends/images/c/c8/Taliyah_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203621'"  alt=""/>
+					</a>
+				</li>
+				<li>
+					<a href="http://leagueoflegends.wikia.com/wiki/Talon">
+						<img src="https://vignette.wikia.nocookie.net/leagueoflegends/images/3/3e/Talon_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203622"
+						onmouseover="this.src='https://i.imgur.com/zI3sGDj.png'"
+						onmouseleave="this.src='https://vignette.wikia.nocookie.net/leagueoflegends/images/3/3e/Talon_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203622'"  alt=""/>
+					</a>
+				</li>
+				<li>
+					<a href="http://leagueoflegends.wikia.com/wiki/Taric">
+						<img src="https://vignette.wikia.nocookie.net/leagueoflegends/images/4/4a/Taric_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203623"
+						onmouseover="this.src='https://i.imgur.com/zI3sGDj.png'"
+						onmouseleave="this.src='https://vignette.wikia.nocookie.net/leagueoflegends/images/4/4a/Taric_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203623'"  alt=""/>
+					</a>
+				</li>
+				<li>
+					<a href="http://leagueoflegends.wikia.com/wiki/Teemo">
+						<img src="https://vignette.wikia.nocookie.net/leagueoflegends/images/5/5f/Teemo_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203624"
+						onmouseover="this.src='https://i.imgur.com/zI3sGDj.png'"
+						onmouseleave="this.src='https://vignette.wikia.nocookie.net/leagueoflegends/images/5/5f/Teemo_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203624'"  alt=""/>
+					</a>
+				</li>
+				<li>
+					<a href="http://leagueoflegends.wikia.com/wiki/Thresh">
+						<img src="https://vignette.wikia.nocookie.net/leagueoflegends/images/4/46/Thresh_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203624"
+						onmouseover="this.src='https://i.imgur.com/zI3sGDj.png'"
+						onmouseleave="this.src='https://vignette.wikia.nocookie.net/leagueoflegends/images/4/46/Thresh_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203624'"  alt=""/>
+					</a>
+				</li>
+				<li>
+					<a href="http://leagueoflegends.wikia.com/wiki/Tristana">
+						<img src="https://vignette.wikia.nocookie.net/leagueoflegends/images/6/67/Tristana_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203651"
+						onmouseover="this.src='https://i.imgur.com/zI3sGDj.png'"
+						onmouseleave="this.src='https://vignette.wikia.nocookie.net/leagueoflegends/images/6/67/Tristana_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203651'"  alt=""/>
+					</a>
+				</li>
+				<li>
+					<a href="http://leagueoflegends.wikia.com/wiki/Trundle">
+						<img src="https://vignette.wikia.nocookie.net/leagueoflegends/images/0/0b/Trundle_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203652"
+						onmouseover="this.src='https://i.imgur.com/zI3sGDj.png'"
+						onmouseleave="this.src='https://vignette.wikia.nocookie.net/leagueoflegends/images/0/0b/Trundle_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203652'"  alt=""/>
+					</a>
+				</li>
+				<li>
+					<a href="http://leagueoflegends.wikia.com/wiki/Tryndamere">
+						<img src="https://vignette.wikia.nocookie.net/leagueoflegends/images/3/36/Tryndamere_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203652"
+						onmouseover="this.src='https://i.imgur.com/zI3sGDj.png'"
+						onmouseleave="this.src='https://vignette.wikia.nocookie.net/leagueoflegends/images/3/36/Tryndamere_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203652'"  alt=""/>
+					</a>
+				</li>
+				<li>
+					<a href="http://leagueoflegends.wikia.com/wiki/Twisted_Fate">
+						<img src="https://vignette.wikia.nocookie.net/leagueoflegends/images/4/49/Twisted_Fate_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203653"
+						onmouseover="this.src='https://i.imgur.com/zI3sGDj.png'"
+						onmouseleave="this.src='https://vignette.wikia.nocookie.net/leagueoflegends/images/4/49/Twisted_Fate_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203653'"  alt=""/>
+					</a>
+				</li>
+				<li>
+					<a href="http://leagueoflegends.wikia.com/wiki/Twitch">
+						<img src="https://vignette.wikia.nocookie.net/leagueoflegends/images/8/8a/Twitch_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203654"
+						onmouseover="this.src='https://i.imgur.com/zI3sGDj.png'"
+						onmouseleave="this.src='https://vignette.wikia.nocookie.net/leagueoflegends/images/8/8a/Twitch_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203654'"  alt=""/>
+					</a>
+				</li>
+				<li>
+					<a href="http://leagueoflegends.wikia.com/wiki/Udyr">
+						<img src="https://vignette.wikia.nocookie.net/leagueoflegends/images/9/9b/Udyr_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203654"
+						onmouseover="this.src='https://i.imgur.com/zI3sGDj.png'"
+						onmouseleave="this.src='https://vignette.wikia.nocookie.net/leagueoflegends/images/9/9b/Udyr_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203654'"  alt=""/>
+					</a>
+				</li>
+				<li>
+					<a href="http://leagueoflegends.wikia.com/wiki/Urgot">
+						<img src="https://vignette.wikia.nocookie.net/leagueoflegends/images/7/7c/Urgot_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203655"
+						onmouseover="this.src='https://i.imgur.com/zI3sGDj.png'"
+						onmouseleave="this.src='https://vignette.wikia.nocookie.net/leagueoflegends/images/7/7c/Urgot_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203655'"  alt=""/>
+					</a>
+				</li>
+				<li>
+					<a href="http://leagueoflegends.wikia.com/wiki/Varus">
+						<img src="https://vignette.wikia.nocookie.net/leagueoflegends/images/f/f5/Varus_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203656"
+						onmouseover="this.src='https://i.imgur.com/zI3sGDj.png'"
+						onmouseleave="this.src='https://vignette.wikia.nocookie.net/leagueoflegends/images/f/f5/Varus_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203656'"  alt=""/>
+					</a>
+				</li>
+				<li>
+					<a href="http://leagueoflegends.wikia.com/wiki/Vayne">
+						<img src="https://vignette.wikia.nocookie.net/leagueoflegends/images/8/83/Vayne_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203657"
+						onmouseover="this.src='https://i.imgur.com/zI3sGDj.png'"
+						onmouseleave="this.src='https://vignette.wikia.nocookie.net/leagueoflegends/images/8/83/Vayne_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203657'"  alt=""/>
+					</a>
+				</li>
+				<li>
+					<a href="http://leagueoflegends.wikia.com/wiki/Veigar">
+						<img src="https://vignette.wikia.nocookie.net/leagueoflegends/images/e/e8/Veigar_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203657"
+						onmouseover="this.src='https://i.imgur.com/zI3sGDj.png'"
+						onmouseleave="this.src='https://vignette.wikia.nocookie.net/leagueoflegends/images/e/e8/Veigar_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203657'"  alt=""/>
+					</a>
+				</li>
+				<li>
+					<a href="http://leagueoflegends.wikia.com/wiki/Vel'Koz">
+						<img src="https://vignette.wikia.nocookie.net/leagueoflegends/images/5/59/Vel%27Koz_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203723"
+						onmouseover="this.src='https://i.imgur.com/zI3sGDj.png'"
+						onmouseleave="this.src='https://vignette.wikia.nocookie.net/leagueoflegends/images/5/59/Vel%27Koz_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203723'"  alt=""/>
+					</a>
+				</li>
+				<li>
+					<a href="http://leagueoflegends.wikia.com/wiki/Vi">
+						<img src="https://vignette.wikia.nocookie.net/leagueoflegends/images/c/c5/Vi_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203724"
+						onmouseover="this.src='https://i.imgur.com/zI3sGDj.png'"
+						onmouseleave="this.src='https://vignette.wikia.nocookie.net/leagueoflegends/images/c/c5/Vi_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203724'"  alt=""/>
+					</a>
+				</li>
+				<li>
+					<a href="http://leagueoflegends.wikia.com/wiki/Viktor">
+						<img src="https://vignette.wikia.nocookie.net/leagueoflegends/images/f/f6/Viktor_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203725"
+						onmouseover="this.src='https://i.imgur.com/zI3sGDj.png'"
+						onmouseleave="this.src='https://vignette.wikia.nocookie.net/leagueoflegends/images/f/f6/Viktor_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203725'"  alt=""/>
+					</a>
+				</li>
+				<li>
+					<a href="http://leagueoflegends.wikia.com/wiki/Vladimir">
+						<img src="https://vignette.wikia.nocookie.net/leagueoflegends/images/0/01/Vladimir_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203725"
+						onmouseover="this.src='https://i.imgur.com/zI3sGDj.png'"
+						onmouseleave="this.src='https://vignette.wikia.nocookie.net/leagueoflegends/images/0/01/Vladimir_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203725'"  alt=""/>
+					</a>
+				</li>
+				<li>
+					<a href="http://leagueoflegends.wikia.com/wiki/Volibear">
+						<img src="https://vignette.wikia.nocookie.net/leagueoflegends/images/f/f3/Volibear_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203726"
+						onmouseover="this.src='https://i.imgur.com/zI3sGDj.png'"
+						onmouseleave="this.src='https://vignette.wikia.nocookie.net/leagueoflegends/images/f/f3/Volibear_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203726'"  alt=""/>
+					</a>
+				</li>
+				<li>
+					<a href="http://leagueoflegends.wikia.com/wiki/Warwick">
+						<img src="https://vignette.wikia.nocookie.net/leagueoflegends/images/b/b5/Warwick_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203727"
+						onmouseover="this.src='https://i.imgur.com/zI3sGDj.png'"
+						onmouseleave="this.src='https://vignette.wikia.nocookie.net/leagueoflegends/images/b/b5/Warwick_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203727'"  alt=""/>
+					</a>
+				</li>
+				<li>
+					<a href="http://leagueoflegends.wikia.com/wiki/Wukong">
+						<img src="https://vignette.wikia.nocookie.net/leagueoflegends/images/c/c1/Wukong_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203728"
+						onmouseover="this.src='https://i.imgur.com/zI3sGDj.png'"
+						onmouseleave="this.src='https://vignette.wikia.nocookie.net/leagueoflegends/images/c/c1/Wukong_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203728'"  alt=""/>
+					</a>
+				</li>
+				<li>
+					<a href="http://leagueoflegends.wikia.com/wiki/Xayah">
+						<img src="https://vignette.wikia.nocookie.net/leagueoflegends/images/6/66/Xayah_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203728"
+						onmouseover="this.src='https://i.imgur.com/zI3sGDj.png'"
+						onmouseleave="this.src='https://vignette.wikia.nocookie.net/leagueoflegends/images/6/66/Xayah_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203728'"  alt=""/>
+					</a>
+				</li>
+				<li>
+					<a href="http://leagueoflegends.wikia.com/wiki/Xerath">
+						<img src="https://vignette.wikia.nocookie.net/leagueoflegends/images/4/40/Xerath_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203729"
+						onmouseover="this.src='https://i.imgur.com/zI3sGDj.png'"
+						onmouseleave="this.src='https://vignette.wikia.nocookie.net/leagueoflegends/images/4/40/Xerath_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203729'"  alt=""/>
+					</a>
+				</li>
+				<li>
+					<a href="http://leagueoflegends.wikia.com/wiki/Xin_Zhao">
+						<img src="https://vignette.wikia.nocookie.net/leagueoflegends/images/a/a0/Xin_Zhao_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203730"
+						onmouseover="this.src='https://i.imgur.com/zI3sGDj.png'"
+						onmouseleave="this.src='https://vignette.wikia.nocookie.net/leagueoflegends/images/a/a0/Xin_Zhao_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203730'"  alt=""/>
+					</a>
+				</li>
+				<li>
+					<a href="http://leagueoflegends.wikia.com/wiki/Yasuo">
+						<img src="https://vignette.wikia.nocookie.net/leagueoflegends/images/c/cd/Yasuo_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203759"
+						onmouseover="this.src='https://i.imgur.com/zI3sGDj.png'"
+						onmouseleave="this.src='https://vignette.wikia.nocookie.net/leagueoflegends/images/c/cd/Yasuo_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203759'"  alt=""/>
+					</a>
+				</li>
+				<li>
+					<a href="http://leagueoflegends.wikia.com/wiki/Yorick">
+						<img src="https://vignette.wikia.nocookie.net/leagueoflegends/images/8/82/Yorick_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203800"
+						onmouseover="this.src='https://i.imgur.com/zI3sGDj.png'"
+						onmouseleave="this.src='https://vignette.wikia.nocookie.net/leagueoflegends/images/8/82/Yorick_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203800'"  alt=""/>
+					</a>
+				</li>
+				<li>
+					<a href="http://leagueoflegends.wikia.com/wiki/Zac">
+						<img src="https://vignette.wikia.nocookie.net/leagueoflegends/images/5/5a/Zac_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203800"
+						onmouseover="this.src='https://i.imgur.com/zI3sGDj.png'"
+						onmouseleave="this.src='https://vignette.wikia.nocookie.net/leagueoflegends/images/5/5a/Zac_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203800'"  alt=""/>
+					</a>
+				</li>
+				<li>
+					<a href="http://leagueoflegends.wikia.com/wiki/Zed">
+						<img src="https://vignette.wikia.nocookie.net/leagueoflegends/images/5/5f/Zed_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203801"
+						onmouseover="this.src='https://i.imgur.com/zI3sGDj.png'"
+						onmouseleave="this.src='https://vignette.wikia.nocookie.net/leagueoflegends/images/5/5f/Zed_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203801'"  alt=""/>
+					</a>
+				</li>
+				<li>
+					<a href="http://leagueoflegends.wikia.com/wiki/Ziggs">
+						<img src="https://vignette.wikia.nocookie.net/leagueoflegends/images/6/6e/Ziggs_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203802"
+						onmouseover="this.src='https://i.imgur.com/zI3sGDj.png'"
+						onmouseleave="this.src='https://vignette.wikia.nocookie.net/leagueoflegends/images/6/6e/Ziggs_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203802'"  alt=""/>
+					</a>
+				</li>
+				<li>
+					<a href="http://leagueoflegends.wikia.com/wiki/Zilean">
+						<img src="https://vignette.wikia.nocookie.net/leagueoflegends/images/4/45/Zilean_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203802"
+						onmouseover="this.src='https://i.imgur.com/zI3sGDj.png'"
+						onmouseleave="this.src='https://vignette.wikia.nocookie.net/leagueoflegends/images/4/45/Zilean_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203802'"  alt=""/>
+					</a>
+				</li>
+				<li>
+					<a href="http://leagueoflegends.wikia.com/wiki/Zoe">
+						<img src="https://vignette.wikia.nocookie.net/leagueoflegends/images/e/e0/Zoe_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203803"
+						onmouseover="this.src='https://i.imgur.com/zI3sGDj.png'"
+						onmouseleave="this.src='https://vignette.wikia.nocookie.net/leagueoflegends/images/e/e0/Zoe_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203803'"  alt=""/>
+					</a>
+				</li>
+				<li>
+					<a href="http://leagueoflegends.wikia.com/wiki/Zyra">
+						<img src="https://vignette.wikia.nocookie.net/leagueoflegends/images/1/14/Zyra_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203804"
+						onmouseover="this.src='https://i.imgur.com/zI3sGDj.png'"
+						onmouseleave="this.src='https://vignette.wikia.nocookie.net/leagueoflegends/images/1/14/Zyra_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203804'"  alt=""/>
+					</a>
+				</li>
+
+
+			</ol>
+		</div>
+		<script src="sketch.js" type="text/javascript"></script>
+	</body>
+	</html>
