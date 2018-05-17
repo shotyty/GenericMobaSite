@@ -1,3 +1,21 @@
+@import url('https://fonts.google.com/specimen/Ubuntu');
+
+@media (max-width: 745px) {
+  #fixedNavbar h3 {
+    float: left;
+    display: inline-block;
+    position: relative;
+  }
+  #fixedNavbar {
+ 
+  width: 2000px;
+  margin: 0 auto;
+  display: inline-block;
+
+
+   }
+}
+
 .no-print p{
 	display: none;
 }
@@ -11,19 +29,31 @@
 	border: 1px solid white;
 }
 
+#tags {
+  font-size: 50px;
+  color: white;
+  display: flex;
+  width: 70px;
+  height: 70px;
+  border: 1px solid white;
+}
 body {
 	background-color: #272626;
 }
 
 .container {
-	width: 100%;
+	width: 2000px;
 	margin: 0 auto;
 	overflow: hidden;
 	display: inline-block;
+  padding-top: 73px;
 }
 
 .grid {
 	margin-top: 150px;
+  margin-left: 250px;
+  margin-right: 250px;
+
 }
 
 ol li {
@@ -39,21 +69,30 @@ ol li {
 	padding: 0;
 }
 
-.roster li a img{
-	border: 1px solid grey;
-	border-radius: 5px;
-	max-width: 100%;
-  max-height: 100%;
-  height: 175px;
-  width: 175px;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  object-fit: cover;
-  image-rendering: auto;
+.roster div {
+  display: inline-block;
 }
 
-.roster li a img:hover {
+.roster div li a img{
+	border: 1px solid grey;
+	border-radius: 25px;
+  height: 250px;
+  width: 250px;
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 25px;
+  object-fit: cover;
 }
+
+.aatrox li a{
+    border: 1px solid grey;
+  border-radius: 25px;
+  height: 250px;
+  width: 250px;
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 25px;
+  object-fit: cover;
+}
+
 
 .roster {
  	line-height:0;
@@ -63,490 +102,59 @@ ol li {
 
 }
 
-.tank {
+#aatrox {
   display: inline-block;
 }
 
 .mage {
+  display: inline-block
+}
+
+
+#fixedNavbar h3 {
+  overflow: all;
+  font-family: Ubuntu;
+  line-height: 15px;
+  color: white;
   display: inline-block;
-}
-/*
-.aatrox {
-	float: left;
-	display: inline-block;
-  	max-width: 100%;
-  	max-height: 100%;
-  	height: 316px;
-  	width: 316px;
- 	background: url(https://vignette.wikia.nocookie.net/leagueoflegends/images/6/67/Aatrox_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414201907) no-repeat;
-	border-radius: 5px;
-	-webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    background-size: cover;
-    background-position: center; 
+  padding-left: 30px;
+  padding-right: 20px;
+  margin-top: : 0px;
+  padding-bottom: 0px;
+  text-align: center;
 }
 
-.aatrox:hover {
-	height: 316px;
-  	width: 316px;
-	border-radius: 5px;
-	-webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    background: url('https://i.imgur.com/zI3sGDj.png') no-repeat;
-    background-size: cover;
-    background-position: center; 
+header {
+    width: 100%;
+  z-index: 1000;
+  height: 53px;
+  text-align: center;
+  margin: 0;
+  background-color: #7c665f;
+  position: fixed;
 }
 
-.ahri {
-	float: left;
-	display: inline-block;
-  	max-width: 100%;
-  	max-height: 100%;
-  	height: 316px;
-  	width: 316px;
- 	background: url(https://vignette.wikia.nocookie.net/leagueoflegends/images/f/f1/Ahri_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414201908) no-repeat;
-	border-radius: 5px;
-	-webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    background-size: cover;
-    background-position: center; 
+#filterDropdown {
+  font-size: 20px;
+  height: 30px;
+  position: relative;
+  font-family: Ubuntu;
+  width: 200px;
+  color: white;
+  background-color: #352728 ;
+    left: 110px;
 }
 
-.ahri:hover {
-	height: 316px;
-  	width: 316px;
-	border-radius: 5px;
-	-webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    background: url('https://i.imgur.com/zI3sGDj.png') no-repeat;
-    background-size: cover;
-    background-position: center; 
+#filterDropdown option {
+  color: white;
+  background-color: #352728 ;
 }
 
-.akali {
-	float: left;
-	display: inline-block;
-  	max-width: 100%;
-  	max-height: 100%;
-  	height: 316px;
-  	width: 316px;
- 	background: url(https://vignette.wikia.nocookie.net/leagueoflegends/images/c/c5/Akali_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414201909) no-repeat;
-	border-radius: 5px;
-	-webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    background-size: cover;
-    background-position: center; 
+.selectFilter {
+  display: flex;
 }
 
-.akali:hover {
-	height: 316px;
-  	width: 316px;
-	border-radius: 5px;
-	-webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    background: url('https://i.imgur.com/zI3sGDj.png') no-repeat;
-    background-size: cover;
-    background-position: center; 
+.aatrox li a{
+  background-image: : url('/img/champion/tiles/aatrox_0.jpg');
+  background-size: cover;
 }
-.alistar {
-	float: left;
-	display: inline-block;
-  	max-width: 100%;
-  	max-height: 100%;
-  	height: 316px;
-  	width: 316px;
- 	background: url(https://vignette.wikia.nocookie.net/leagueoflegends/images/3/30/Alistar_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414201910) no-repeat;
-	border-radius: 5px;
-	-webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    background-size: cover;
-    background-position: center; 
-}
-
-.alistar:hover {
-	height: 316px;
-  	width: 316px;
-	border-radius: 5px;
-	-webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    background: url('https://i.imgur.com/zI3sGDj.png') no-repeat;
-    background-size: cover;
-    background-position: center; 
-}
-/*
-.amumu {
-	float: left;
-	display: inline-block;
-  	max-width: 100%;
-  	max-height: 100%;
-  	height: 316px;
-  	width: 316px;
- 	background: url(https://vignette.wikia.nocookie.net/leagueoflegends/images/b/b4/Amumu_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414201911) no-repeat;
-	border-radius: 5px;
-	-webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    background-size: cover;
-    background-position: center;
- }
-
-.amumu:hover {
-	height: 316px;
-  	width: 316px;
-	border-radius: 5px;
-	-webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    background: url('https://i.imgur.com/zI3sGDj.png') no-repeat;
-    background-size: cover;
-    background-position: center; 
-}
-
-.anivia {
-	float: left;
-	display: inline-block;
-  	max-width: 100%;
-  	max-height: 100%;
-  	height: 316px;
-  	width: 316px;
- 	background: url(https://vignette.wikia.nocookie.net/leagueoflegends/images/c/c0/Anivia_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414201911) no-repeat;
-	border-radius: 5px;
-	-webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    background-size: cover;
-    background-position: center;
- }
-
-.anivia:hover {
-	height: 316px;
-  	width: 316px;
-	border-radius: 5px;
-	-webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    background: url('https://i.imgur.com/zI3sGDj.png') no-repeat;
-    background-size: cover;
-    background-position: center; 
-}
-.annie {
-	float: left;
-	display: inline-block;
-  	max-width: 100%;
-  	max-height: 100%;
-  	height: 316px;
-  	width: 316px;
- 	background: url(https://vignette.wikia.nocookie.net/leagueoflegends/images/8/81/Annie_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414201912) no-repeat;
-	border-radius: 5px;
-	-webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    background-size: cover;
-    background-position: center;
- }
-
-.annie:hover {
-	height: 316px;
-  	width: 316px;
-	border-radius: 5px;
-	-webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    background: url('https://i.imgur.com/zI3sGDj.png') no-repeat;
-    background-size: cover;
-    background-position: center; 
-}
-.ashe {
-	float: left;
-	display: inline-block;
-  	max-width: 100%;
-  	max-height: 100%;
-  	height: 316px;
-  	width: 316px;
- 	background: url(https://vignette.wikia.nocookie.net/leagueoflegends/images/b/b8/Ashe_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414201913) no-repeat;
-	border-radius: 5px;
-	-webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    background-size: cover;
-    background-position: center;
- }
-
-.ashe:hover {
-	height: 316px;
-  	width: 316px;
-	border-radius: 5px;
-	-webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    background: url('https://i.imgur.com/zI3sGDj.png') no-repeat;
-    background-size: cover;
-    background-position: center; 
-}
-.aurelion_sol {
-	float: left;
-	display: inline-block;
-  	max-width: 100%;
-  	max-height: 100%;
-  	height: 316px;
-  	width: 316px;
- 	background: url(https://vignette.wikia.nocookie.net/leagueoflegends/images/6/65/Aurelion_Sol_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414201914) no-repeat;
-	border-radius: 5px;
-	-webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    background-size: cover;
-    background-position: center;
- }
-
-.aurelion_sol:hover {
-	height: 316px;
-  	width: 316px;
-	border-radius: 5px;
-	-webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    background: url('https://i.imgur.com/zI3sGDj.png') no-repeat;
-    background-size: cover;
-    background-position: center; 
-}
-.azir {
-	float: left;
-	display: inline-block;
-  	max-width: 100%;
-  	max-height: 100%;
-  	height: 316px;
-  	width: 316px;
- 	background: url(https://vignette.wikia.nocookie.net/leagueoflegends/images/0/03/Azir_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414201914) no-repeat;
-	border-radius: 5px;
-	-webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    background-size: cover;
-    background-position: center;
- }
-
-.azir:hover {
-	height: 316px;
-  	width: 316px;
-	border-radius: 5px;
-	-webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    background: url('https://i.imgur.com/zI3sGDj.png') no-repeat;
-    background-size: cover;
-    background-position: center; 
-}
-.bard {
-	float: left;
-	display: inline-block;
-  	max-width: 100%;
-  	max-height: 100%;
-  	height: 316px;
-  	width: 316px;
- 	background: url(https://vignette.wikia.nocookie.net/leagueoflegends/images/4/40/Bard_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414201951) no-repeat;
-	border-radius: 5px;
-	-webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    background-size: cover;
-    background-position: center;
- }
-
-.bard:hover {
-	height: 316px;
-  	width: 316px;
-	border-radius: 5px;
-	-webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    background: url('https://i.imgur.com/zI3sGDj.png') no-repeat;
-    background-size: cover;
-    background-position: center; 
-}
-.blitzcrank {
-	float: left;
-	display: inline-block;
-  	max-width: 100%;
-  	max-height: 100%;
-  	height: 316px;
-  	width: 316px;
- 	background: url(https://vignette.wikia.nocookie.net/leagueoflegends/images/6/65/Blitzcrank_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414201951) no-repeat;
-	border-radius: 5px;
-	-webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    background-size: cover;
-    background-position: center;
- }
-
-.blitzcrank:hover {
-	height: 316px;
-  	width: 316px;
-	border-radius: 5px;
-	-webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    background: url('https://i.imgur.com/zI3sGDj.png') no-repeat;
-    background-size: cover;
-    background-position: center; 
-}
-.brand {
-	float: left;
-	display: inline-block;
-  	max-width: 100%;
-  	max-height: 100%;
-  	height: 316px;
-  	width: 316px;
- 	background: url(https://vignette.wikia.nocookie.net/leagueoflegends/images/f/f0/Brand_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414201952) no-repeat;
-	border-radius: 5px;
-	-webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    background-size: cover;
-    background-position: center;
- }
-
-.brand:hover {
-	height: 316px;
-  	width: 316px;
-	border-radius: 5px;
-	-webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    background: url('https://i.imgur.com/zI3sGDj.png') no-repeat;
-    background-size: cover;
-    background-position: center; 
-}
-.braum {
-	float: left;
-	display: inline-block;
-  	max-width: 100%;
-  	max-height: 100%;
-  	height: 316px;
-  	width: 316px;
- 	background: url(https://vignette.wikia.nocookie.net/leagueoflegends/images/6/66/Braum_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414201953) no-repeat;
-	border-radius: 5px;
-	-webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    background-size: cover;
-    background-position: center;
- }
-
-.braum:hover {
-	height: 316px;
-  	width: 316px;
-	border-radius: 5px;
-	-webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    background: url('https://i.imgur.com/zI3sGDj.png') no-repeat;
-    background-size: cover;
-    background-position: center; 
-}
-.caitlyn {
-	float: left;
-	display: inline-block;
-  	max-width: 100%;
-  	max-height: 100%;
-  	height: 316px;
-  	width: 316px;
- 	background: url(https://vignette.wikia.nocookie.net/leagueoflegends/images/e/ef/Caitlyn_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414201954) no-repeat;
-	border-radius: 5px;
-	-webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    background-size: cover;
-    background-position: center;
- }
-
-.caitlyn:hover {
-	height: 316px;
-  	width: 316px;
-	border-radius: 5px;
-	-webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    background: url('https://i.imgur.com/zI3sGDj.png') no-repeat;
-    background-size: cover;
-    background-position: center; 
-}
-.camille {
-	float: left;
-	display: inline-block;
-  	max-width: 100%;
-  	max-height: 100%;
-  	height: 316px;
-  	width: 316px;
- 	background: url(https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Camille_0.jpg) no-repeat;
-	border-radius: 5px;
-	-webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    background-size: cover;
-    background-position: center;
- }
-
-.camille:hover {
-	height: 316px;
-  	width: 316px;
-	border-radius: 5px;
-	-webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    background: url('https://i.imgur.com/zI3sGDj.png') no-repeat;
-    background-size: cover;
-    background-position: center; 
-}
-.cassiopeia {
-	float: left;
-	display: inline-block;
-  	max-width: 100%;
-  	max-height: 100%;
-  	height: 316px;
-  	width: 316px;
- 	background: url(https://vignette.wikia.nocookie.net/leagueoflegends/images/2/23/Cassiopeia_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414201955) no-repeat;
-	border-radius: 5px;
-	-webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    background-size: cover;
-    background-position: center;
- }
-
-.cassiopeia:hover {
-	height: 316px;
-  	width: 316px;
-	border-radius: 5px;
-	-webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    background: url('https://i.imgur.com/zI3sGDj.png') no-repeat;
-    background-size: cover;
-    background-position: center; 
-}
-.chogath {
-	float: left;
-	display: inline-block;
-  	max-width: 100%;
-  	max-height: 100%;
-  	height: 316px;
-  	width: 316px;
- 	background: url(https://vignette.wikia.nocookie.net/leagueoflegends/images/d/dd/Cho%27Gath_Update_Splash_concept.jpg/revision/latest?cb=20171006210627) no-repeat;
-	border-radius: 5px;
-	-webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    background-size: cover;
-    background-position: center;
- }
-
-.chogath:hover {
-	height: 316px;
-  	width: 316px;
-	border-radius: 5px;
-	-webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    background: url('https://i.imgur.com/zI3sGDj.png') no-repeat;
-    background-size: cover;
-    background-position: center; 
-}
-.camille {
-	float: left;
-	display: inline-block;
-  	max-width: 100%;
-  	max-height: 100%;
-  	height: 316px;
-  	width: 316px;
- 	background: url(https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Camille_0.jpg) no-repeat;
-	border-radius: 5px;
-	-webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    background-size: cover;
-    background-position: center;
- }
-
-.camille:hover {
-	height: 316px;
-  	width: 316px;
-	border-radius: 5px;
-	-webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    background: url('https://i.imgur.com/zI3sGDj.png') no-repeat;
-    background-size: cover;
-    background-position: center; 
-}*/
